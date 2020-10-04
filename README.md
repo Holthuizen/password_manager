@@ -3,7 +3,7 @@ A Command Line Tool, for storing account credentials.
 
 ---
 ### Prerequisites
-make sure to have python >= 3.6 
+make sure to have python 3.6 or higher
 
 
 ### setup:
