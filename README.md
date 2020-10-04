@@ -2,7 +2,7 @@
 A Command Line Tool for fast and safely managing account credentials.
 
 ---
-### Prerequisites:
+## Prerequisites:
 Make sure to have python 3.6 or higher
 
 ## motivation: 
@@ -19,14 +19,14 @@ Make sure to have python 3.6 or higher
 * File encryption: Secure a file by encrypting it, using the same master password.
 ---
 
-### setup:
+## setup:
 Place the following files in the same directory:
 * pass.py
 * diceware.py
 * diceware_list.txt
 From this directory you can run command with: python pass.py [-command] [arguments]
 
-**Run the following three commands to get started:** 
+**Run the following two commands to get started:** 
 
 Use the setup command to setup your files and master pass. 
 ```
