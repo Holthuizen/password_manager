@@ -1,10 +1,12 @@
-# password_manager
-a command line run tool, for storing account credentials
+## password_manager
+a Command Line Tool, for storing account credentials. 
+
+
+### Prerequisites
+make sure to have python >= 3.6 
 
 
 # setup:
-
-make sure to have python >= 3.6 <br>
 place file in the same direcory, run: python pass.py -help
 this will print the help menue
 use the setup command to setup your files.
