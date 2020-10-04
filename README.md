@@ -1,15 +1,15 @@
 ## password_manager
-A Command Line Tool, for storing account credentials. 
+A Command Line Tool for fast and safely managing account credentials.
 
 ---
-### Prerequisites
+### Prerequisites:
 Make sure to have python 3.6 or higher
 
 ## motivation: 
 ...
 
 
-## Features
+## Features:
 
 * Simple setup: Create a master password / passphrase and that's it (pick a strong one).
 * Command Line controlled: In the hands of experience user quicker than most password managers.  
@@ -17,24 +17,25 @@ Make sure to have python 3.6 or higher
 * Diceware Passphrase generation: Create strong, random but easy to remember passwords.
 * Backup: Plain text backup option (uses with caution).
 * File encryption: Secure a file by encrypting it, using the same master password.
-
-
+---
 
 ### setup:
-Place the folowing files in the same direcory: 
+Place the following files in the same directory:
 * pass.py
 * diceware.py
 * diceware_list.txt
 From this directory you can run command with: python pass.py [-command] [arguments]
 
-example:
+
+Example:
 ```
 python pass.py -help
 ```
-This will print the "help menue",
-use the setup command to setup your files and master pass.
+This will print the "help menu",
+use the setup command to setup your files and master pass. 
 
---- 
+---
+
 ### passwords: 
 having a good master password is very important. 
 Three highly recomanded resouce on passwords an cyber security: 
@@ -46,5 +47,5 @@ Three highly recomanded resouce on passwords an cyber security:
 In short: pick a password with 10 or more characters, not containing words found in the top 5000 most used words. 
 
 
-## examples : 
+## examples: 
 ....
