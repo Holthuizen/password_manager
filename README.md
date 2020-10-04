@@ -47,7 +47,7 @@ Three highly recommended resource on passwords and cyber security:
 In short: pick a password with 10 or more characters, not containing words found in the top 5000 most used words.
 
 ## examples:
-Store acount password pair: 
+Store "acount password pair" of facebook: 
 ```
 python pass.py -store fb mypass123
 ```
