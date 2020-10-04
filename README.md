@@ -11,9 +11,11 @@ place files in the same direcory:
 * pass.py
 * diceware.py
 * diceware_list.txt
-from this directory you can run command with python pass.y -flag arguments
-example: python pass.py -help
-<br>
+from this directory you can run command with python pass.y -command arguments
+example:
+```
+~ python pass.py -help
+```
 this will print the help menue
 use the setup command to setup your files.
 
