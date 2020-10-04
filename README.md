@@ -1,7 +1,7 @@
 ## password_manager
 A Command Line Tool, for storing account credentials. 
 
-
+---
 ### Prerequisites
 make sure to have python >= 3.6 
 
@@ -16,7 +16,7 @@ example:
 ```
 ~ python pass.py -help
 ```
-this will print the help menue
+this will print the help menue,
 use the setup command to setup your files.
 
 --- 
