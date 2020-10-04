@@ -57,6 +57,6 @@ Lookup password for facebook:
 ```
 python pass.py -get fb
 ```
->> *mypass123*
+-> *mypass123*
 
 ....
