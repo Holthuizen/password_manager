@@ -37,15 +37,14 @@ use the setup command to setup your files and master pass.
 ---
 
 ### passwords: 
-having a good master password is very important. 
-Three highly recomanded resouce on passwords an cyber security: 
+Having a good master password is very important. 
 
+Three highly recommended resource on passwords and cyber security:
 * How to Choose a Password - https://www.youtube.com/watch?v=3NjQ9b3pgIg
 * Diceware & Passwords - https://www.youtube.com/watch?v=Pe_3cFuSw1E
 * How Password Managers Work -https://www.youtube.com/watch?v=w68BBPDAWr8
 
-In short: pick a password with 10 or more characters, not containing words found in the top 5000 most used words. 
-
+In short: pick a password with 10 or more characters, not containing words found in the top 5000 most used words.
 
 ## examples: 
 ....
