@@ -26,20 +26,20 @@ Place the following files in the same directory:
 * diceware_list.txt
 From this directory you can run command with: python pass.py [-command] [arguments]
 
-run the following command to get started
+**Run the following three commands to get started:** 
 
 Use the setup command to setup your files and master pass. 
 ```
 python pass.py -setup
 ```
 This generates a password_pairs.txt 
-(optional you can now add accounts manualy, by folowing the format name1:pw1-name2:pw2 etc)
+*(optional you can now add accounts manually, by following the format name1:pw1-name2:pw2 etc)*
 
-Encrypt your password_pairs.txt with: 
+Now encrypt your password_pairs.txt with: 
 ```
 python pass.py -encrypt_file password_pairs.txt
 ```
-Your are now setup to use the password manager. 
+Your are setup to use the password manager! 
 Run the -help command for more info. 
 ```
 python pass.py -help
