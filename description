@@ -1,0 +1,12 @@
+super small password manager in cli 
+
+features: 
+    master password, update and reset 
+    store a string of account & password 
+    update password 
+    delete account 
+
+
+
+"fb:password-insta:password2,scooby:password3" 
+
