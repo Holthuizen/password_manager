@@ -1,5 +1,5 @@
 ## password_manager
-a Command Line Tool, for storing account credentials. 
+A Command Line Tool, for storing account credentials. 
 
 
 ### Prerequisites
