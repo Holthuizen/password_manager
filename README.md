@@ -3,20 +3,20 @@ A Command Line Tool, for storing account credentials.
 
 ---
 ### Prerequisites
-make sure to have python 3.6 or higher
+Make sure to have python 3.6 or higher
 
 
 ### setup:
-place files in the same direcory: 
+Place files in the same direcory: 
 * pass.py
 * diceware.py
 * diceware_list.txt
-from this directory you can run command with python pass.y -command arguments
+From this directory you can run command with python pass.y -command arguments
 example:
 ```
-~ python pass.py -help
+python pass.py -help
 ```
-this will print the help menue,
+This will print the "help menue",
 use the setup command to setup your files.
 
 --- 
