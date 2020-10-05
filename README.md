@@ -6,7 +6,8 @@ A Command Line Tool for fast and safely managing account credentials.
 Make sure to have python 3.6 or higher
 
 ## motivation: 
-...
+Strong passwords are an obvious component in online security. Most hacks ocour simplly by cracking user passwords, eigher by password leaks on different sites (most people re-use passwords in one form or the other) or by smart brutforce attacks. 
+For me, its not fesable to remember a series of unrelated strong passwords. A password manager solves this problem. it can safly store al my password. 
 
 
 ## Features:
