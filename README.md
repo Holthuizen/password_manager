@@ -34,7 +34,7 @@ Information can be found below on how to pick a strong master password.
 ```
 python pass.py -setup
 ```
-This generates a password_pairs.txt 
+This generates a password_pairs.txt file 
 
 *(optionally, you can now add multiple credentials manually, by following this format for pairs of names and passwords name1:pw1-name2:pw2-name3:pw3 etc)*
 
@@ -52,7 +52,7 @@ This will print the "help menu".
 
 ---
 
-## example1:
+### Example1:
 Store your credentials for Facebook: 
 ```
 python pass.py -store fb mypass123
@@ -65,7 +65,7 @@ python pass.py -get fb
 ```
 -> *mypass123*
 
-## example2:
+### Example2:
 
 Storing full credentials:
 ```
@@ -73,7 +73,7 @@ python pass.py -store digidusername johndoe
 python pass.py -store digidpassword mypass456
 ```
 
-## passwords: 
+## Passwords: 
 Having a good master password is very important. 
 
 Three highly recommended resources on passwords and cyber security:
