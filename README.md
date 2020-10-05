@@ -1,11 +1,11 @@
 # Password Manager
-**Pass.py**  A Command Line Tool for fast and safe account credentials storage.
+**Pass.py**  A Command Line Tool for fast and safe credentials storage.
 
 ---
 ## Prerequisites:
 Make sure to have python 3.6 or higher
 
-## motivation: 
+## Motivation: 
 Strong passwords are an obvious component in online security. Most hacks occur simply by cracking user passwords, either by password leaks (most people re-use passwords for different sites) or by bruteforce attacks. 
 For me, it's not feasable to remember a series of unrelated, strong passwords. A password manager solves this problem. It can safely store all my passwords which are encrypted with one single password (master password). 
 I enjoy working with a simple commandline tool, since I feel it is faster and easier. 
@@ -21,7 +21,7 @@ I enjoy working with a simple commandline tool, since I feel it is faster and ea
 * File encryption: Secure a file by encrypting it, using the same master password.
 ---
 
-## setup:
+## Setup:
 Place the following files in the same directory:
 * pass.py
 * diceware.py
