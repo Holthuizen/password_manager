@@ -1,5 +1,5 @@
 # Password Manager
-**pass.py** A Command Line Tool for fast and safely managing account credentials.
+**Pass.py**  A Command Line Tool for fast and safely managing account credentials.
 
 ---
 ## Prerequisites:
