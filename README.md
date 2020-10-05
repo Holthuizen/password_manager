@@ -1,4 +1,4 @@
-## password_manager
+# password_manager
 A Command Line Tool for fast and safely managing account credentials.
 
 ---
