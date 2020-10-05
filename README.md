@@ -49,7 +49,7 @@ This will print the "help menu".
 
 ---
 
-### passwords: 
+## passwords: 
 Having a good master password is very important. 
 
 Three highly recommended resource on passwords and cyber security:
