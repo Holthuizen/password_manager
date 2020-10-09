@@ -19,18 +19,18 @@ password_provided = 'password'  # This is input in the form of a string
 #create json app_config file for storing, salt, checksum and iterations
 def user_setup(path, salt,n):
     if os.path.exists(path): 
-        print("already setup an master password, backup your files in plain text befor changing your masterpass, exiting .. ")
+        print("already setup an master password, backup your files in plain text before changing your masterpass, exiting .. ")
         exit()
     
     if not os.path.exists(password_default_file): 
-        write_file(password_default_file,"default:password") #create file, and add a example value
+        write_file(password_default_file,"default:password") #create file, and add an example value
 
     try:
         salt = salt.decode('utf-8')
     except (UnicodeDecodeError, AttributeError):
         pass
       
-    print("create your masterpassword, your masterpassword acts like a key to encrypt/decrypt your data, dont lose it! ")
+    print("create your master password, your master password acts like a key to encrypt/decrypt your data, don't lose it! ")
     masterpass =  input(" \t setup master password >> ")
     confirm_mp =  input(" \t confirm your master password >> ")
 
@@ -116,9 +116,12 @@ def login():
 #account password pairs (string) to dictionary
 def custom_parser(data_string): 
     _data={}
-    for value in data_string.split('-'): 
-        a,p = value.split(':')
-        _data[a]= p 
+    try:
+        for value in data_string.split('-'): 
+            a,p = value.split(':')
+            _data[a]= p        
+    except:
+        return ""
 
     return _data
 
@@ -173,7 +176,7 @@ def write_file(path,data):
         file.write(data)
         file.close()
     
-#arguments: tupl of strings, base64key
+#arguments: tuple of strings, base64key
 def encrypt(data,key): 
     try:
         secret = data.encode()
@@ -202,7 +205,7 @@ def decrypt(encrypted,key):
         f = Fernet(key)
         return f.decrypt(encrypted)
     except:
-        print("decryption unsuccessful, likely a incorrect master password")
+        print("decryption unsuccessful, likely an incorrect master password")
         exit()
 
 
@@ -230,7 +233,7 @@ def pretty_out(title, message):
 
 parser = argparse.ArgumentParser()
 #for these examples, use a pre defined password    
-parser.add_argument('-setup', action="store_true", help="setup master password (usually a one time action)")
+parser.add_argument('-setup', action="store_true", help="setup master password (usually a one-time action)")
 parser.add_argument('-encrypt_file', nargs=1,help="encrypt a file with your master password,expects: filepath")
 parser.add_argument('-decrypt_file', nargs=1,help="decrypt a file with your master password,expects: filepath")
 parser.add_argument('-store', nargs=2, help="enter account password value")
@@ -238,8 +241,8 @@ parser.add_argument('-get', nargs=1, help="enter account name, returns account p
 parser.add_argument('-update', nargs=2, help="enter account name and new password, returns account password value")
 parser.add_argument('-delete', nargs=1, help="remove / delete  account name and new password")
 parser.add_argument('-list', action="store_true", help="print an overview list of all stored accounts")
-parser.add_argument('-decrypted_backup', action="store_true", help="create a plain text file with all your account, expects: master password, returns backup file path")
-parser.add_argument('-generate_pw', dest='dice', nargs=2, help="generate human readable password, expects: number of words, divider")
+parser.add_argument('-decrypted_backup', action="store_true", help="create a plain text file with all your accounts, expects: master password, returns backup file path")
+parser.add_argument('-generate_pw', dest='dice', nargs=2, help="generate humanly readable password, expects: number of words, divider")
 
 #parse
 args = parser.parse_args()
@@ -328,7 +331,7 @@ if args.delete:
 
 if args.decrypted_backup: 
     key = login()
-    user_input = input("WARNING, make sure to move the created backup file to a save location (do NOT keep it on this pc), continue? (y/n)  ")
+    user_input = input("WARNING, make sure to move the created backup file to a safe location (do NOT keep it on this pc), continue? (y/n)  ")
     if user_input[0] == 'y':
         decrypted = decrypt(read_file(password_default_file), key)
         path = "backup_"+save_as
