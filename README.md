@@ -12,6 +12,9 @@ Strong passwords are an obvious component in online security. Most hacks occur s
 For me, it's not feasable to remember a series of unrelated and strong passwords. A password manager solves this problem. It can safely store all my passwords which are encrypted with one single password (master password). 
 I enjoy working with a simple commandline tool, since I feel it is faster and easier. 
 
+I was mainly motivated by the following Computerphile videos: 
+https://www.youtube.com/watch?v=w68BBPDAWr8
+https://www.youtube.com/watch?v=7U-RbOKanYs
 
 ## Features:
 
