@@ -5,9 +5,11 @@
 ## Prerequisites:
 Make sure to have python 3.6 or higher
 
+*Python can be directly installed from the windows store.*
+
 ## Motivation: 
 Strong passwords are an obvious component in online security. Most hacks occur simply by cracking user passwords, either by password leaks (most people re-use passwords for different sites) or by bruteforce attacks. 
-For me, it's not feasable to remember a series of unrelated, strong passwords. A password manager solves this problem. It can safely store all my passwords which are encrypted with one single password (master password). 
+For me, it's not feasable to remember a series of unrelated and strong passwords. A password manager solves this problem. It can safely store all my passwords which are encrypted with one single password (master password). 
 I enjoy working with a simple commandline tool, since I feel it is faster and easier. 
 
 
