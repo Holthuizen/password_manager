@@ -14,6 +14,7 @@ I enjoy working with a simple commandline tool, since I feel it is faster and ea
 
 I was mainly motivated by the following Computerphile videos: 
 https://www.youtube.com/watch?v=w68BBPDAWr8
+
 https://www.youtube.com/watch?v=7U-RbOKanYs
 
 ## Features:
@@ -34,6 +35,7 @@ Place the following files in the same directory:
 From this directory you can run commands with: python pass.py [-command] [arguments]
 
 **Run the following two commands to get started:** 
+
 Run the setup command to setup your files and master pass. 
 Information can be found below on how to pick a strong master password.
 ```
