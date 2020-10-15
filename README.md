@@ -4,7 +4,6 @@
 ---
 ## Prerequisites:
 Make sure to have python 3.6 or higher
-
 *Python can be directly installed from the windows store.*
 
 pass.py uses cryptography, install via pip with the following command: 
