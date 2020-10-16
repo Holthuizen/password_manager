@@ -46,13 +46,13 @@ Information can be found below on how to pick a strong master password.
 ```
 python pass.py -setup
 ```
-This generates a password_pairs.txt file 
+This generates a credentials.txt file 
 
 *(optionally, you can now add multiple credentials manually, by following this format for pairs of names and passwords name1:pw1-name2:pw2-name3:pw3 etc)*
 
-Now encrypt your password_pairs.txt with: 
+Now encrypt your credentials.txt with: 
 ```
-python pass.py -encrypt_file password_pairs.txt
+python pass.py -encrypt-file credentials.txt
 ```
 Your are all set up to use the password manager! 
 This means you can now add credentials to your manager to store them safely and retrieve them later.
@@ -67,7 +67,11 @@ This will print the "help menu".
 ### Example1:
 Store your credentials for Facebook: 
 ```
-python pass.py -store fb mypass123
+python pass.py --store fb mypass123
+```
+or
+```
+python pass.py -set fb mypass123
 ```
 'fb' is the name of your choice for retrieving this password later, as shown below in the get command. This means you can store full credentials (not only password but alos username) simply by storing both.
 
@@ -81,8 +85,8 @@ python pass.py -get fb
 
 Storing full credentials:
 ```
-python pass.py -store digidusername johndoe
-python pass.py -store digidpassword mypass456
+python pass.py --store digidusername johndoe
+python pass.py --store digidpassword mypass456
 ```
 
 ## Passwords: 
@@ -105,7 +109,7 @@ You can store more than just a (account/password) pair. there is an file encrypt
 When picking a master password, try out the password generation command. It runs the diceware algorithm which returns a password of a given amount of words, separated with a given separator. The diceware algorithm creates passwords with high [entropy](https://en.wikipedia.org/wiki/Password_strength#Entropy_as_a_measure_of_password_strength), that are still somewhat memorable. 
 
 ```
-python pass.py -generate_pw 5 -
+python pass.py -generate-pw 5 -
 ```
 can give an output like:  
 *align-elegy-flog-anton-stomp*
