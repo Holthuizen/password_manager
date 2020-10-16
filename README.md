@@ -18,6 +18,7 @@ For me, it's not feasable to remember a series of unrelated and strong passwords
 I enjoy working with a simple commandline tool, since I feel it is faster and easier. 
 
 I was mainly motivated by the following Computerphile videos: 
+
 https://www.youtube.com/watch?v=w68BBPDAWr8
 
 https://www.youtube.com/watch?v=7U-RbOKanYs
