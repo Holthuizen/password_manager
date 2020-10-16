@@ -10,12 +10,16 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
 
-save_as = "password_pairs.txt"
-password_default_file = "password_pairs.txt"
+password_default_file = "credentials.txt"
 password_provided = 'password'  # This is input in the form of a string
 
-##setup and cryptography:
+#util
+def pretty_out(title, message): 
+    print(f" {'-'*100}")
+    print(f" |{title}|\t{message}"); 
+    print(f" {'-'*100}\n")
 
+##setup and cryptography:
 #create json app_config file for storing, salt, checksum and iterations
 def user_setup(path, salt,n):
     if os.path.exists(path): 
@@ -95,7 +99,7 @@ def load_config(path):
             data = json.load(json_file) 
         return data
     except: 
-        print('app_config.json file could not be loaded')
+        pretty_out("config error",'app_config.json file could not be loaded')
         exit()
 
 
@@ -109,7 +113,7 @@ def login():
     if key[0:10] == config['checksum'].encode():
         return key
     else: 
-        print("master password doesn't match")
+        pretty_out("login error","master password doesn't match")
         exit()
 
 #data reading and writing
@@ -159,7 +163,7 @@ def delete_value(lookup_key, decrypted_data):
 
 def read_file(path): 
         if not os.path.exists(path):
-            print("\n error in read_file:  file not found \n")
+            pretty_out("read file error" "\n error in read_file:  file not found \n")
             exit()
         file = open(path, 'r')  # Open file as read
         contents = file.read()
@@ -186,14 +190,14 @@ def encrypt(data,key):
         f = Fernet(key)
         return f.encrypt(secret)
     except:
-        print("error try again? ")
+        pretty_out("encrypte error","missing data or faild key")
         return login()
 
 #argument types: strings, base64key    
 def decrypt(encrypted,key):
     
     if len(encrypted) < 1: 
-        print("error in decrypt, cannot encrypt less than 1 byte")
+        pretty_out("decrypt error", "cannot encrypt less than 1 byte")
         exit()
 
     try: 
@@ -205,7 +209,7 @@ def decrypt(encrypted,key):
         f = Fernet(key)
         return f.decrypt(encrypted)
     except:
-        print("decryption unsuccessful, likely an incorrect master password")
+        pretty_out("decryption error","likely an incorrect master password")
         exit()
 
 
@@ -215,34 +219,31 @@ def encrypt_file(path,key):
     data = read_file(path)
     encrypted = encrypt(data, key)
     write_file(path,encrypted)
-    print(f"file {path} encrypted")
+    pretty_out("file encryption successful",f"file {path} encrypted")
 
 def decrypt_file(path,key): 
     data = read_file(path)
     print(f"DECRYPT_FILE: path->{path}, key->{key}, data->{data}")
     decrypted = decrypt(data, key)
     write_file(path,decrypted)
-    print(f"file {path} decrypted")
+    pretty_out("file decryption successful",f"file {path} decrypted")
 
 
-def pretty_out(title, message): 
-    print(f" {'-'*100}")
-    print(f" |{title}|\t{message}"); 
-    print(f" {'-'*100}\n")
+
 
 
 parser = argparse.ArgumentParser()
 #for these examples, use a pre defined password    
 parser.add_argument('-setup', action="store_true", help="setup master password (usually a one-time action)")
-parser.add_argument('-encrypt_file', nargs=1,help="encrypt a file with your master password,expects: filepath")
-parser.add_argument('-decrypt_file', nargs=1,help="decrypt a file with your master password,expects: filepath")
-parser.add_argument('-store', nargs=2, help="enter account password value")
+parser.add_argument('-encrypt-file', dest='encrypt_file', nargs=1,help="encrypt a file with your master password,expects: filepath")
+parser.add_argument('-decrypt-file', dest='decrypt_file',nargs=1,help="decrypt a file with your master password,expects: filepath")
+parser.add_argument('-set','--store', dest='store', nargs=2, help="enter 'account password' pair")
 parser.add_argument('-get', nargs=1, help="enter account name, returns account password")
 parser.add_argument('-update', nargs=2, help="enter account name and new password, returns account password value")
 parser.add_argument('-delete', nargs=1, help="remove / delete  account name and new password")
 parser.add_argument('-list', action="store_true", help="print an overview list of all stored accounts")
-parser.add_argument('-decrypted_backup', action="store_true", help="create a plain text file with all your accounts, expects: master password, returns backup file path")
-parser.add_argument('-generate_pw', dest='dice', nargs=2, help="generate humanly readable password, expects: number of words, divider")
+parser.add_argument('-backup', action="store_true", help="create a plain text file with all your accounts, expects: master password, returns backup file path")
+parser.add_argument('-generate-pw', dest='dice', nargs=2, help="generate humanly readable password, expects: number of words, divider")
 
 #parse
 args = parser.parse_args()
@@ -266,7 +267,7 @@ if args.list:
     data = custom_parser(_data.decode())
     output = "\n\n"
     for k,v in data.items(): 
-        output += f" {str(k)}\n"
+        output += f" {k}\n"
 
     pretty_out("list of accounts:", output)
     exit()
@@ -277,13 +278,13 @@ if args.store:
     _data = decrypt(read_file(password_default_file), key)
     value = get_value(args.store[0],_data) 
     if value: 
-        print("value is already stored, use the update command to change its value")
-        print(value)
+        pretty_out("storing pair",f"value {value} is already stored, use the update command to change its value")
+       
     else: 
         data = _data.decode() + '-' + args.store[0]+":"+args.store[1]
         encrypted = encrypt(data,key)
         write_file(password_default_file,encrypted)
-        pretty_out("stored", f"account {args.store[0]} with password {args.store[1]}")
+        pretty_out("storing pair", f"account {args.store[0]} with password {args.store[1]}")
         exit()
 
 
@@ -295,7 +296,7 @@ if args.get:
         # output
         pretty_out("get login",f"-> {value}")
     else: 
-        print("account not found, check the name and try again")
+        pretty_out("retrieving pair","account not found, check the name and try again")
     exit()
 
 
@@ -311,7 +312,8 @@ if args.update:
         pretty_out("updated", f"account {args.update[0]} with password {args.update[1]}")
         exit()
     else: 
-        print("value not found")
+        pretty_out("update error","value was not found")
+
     exit()
 
 
@@ -326,24 +328,23 @@ if args.delete:
         write_file(password_default_file,encrypt(updated_string,key))
         exit()
     else: 
-        print("value not found")
+        pretty_out("delete error","value was not found")
 
-
-if args.decrypted_backup: 
+if args.backup: 
     key = login()
     user_input = input("WARNING, make sure to move the created backup file to a safe location (do NOT keep it on this pc), continue? (y/n)  ")
     if user_input[0] == 'y':
         decrypted = decrypt(read_file(password_default_file), key)
-        path = "backup_"+save_as
+        path = "backup_"+ password_default_file
         write_file(path, decrypted)
         pretty_out(f"backup",f"file at --> {os.getcwd()}\{path}")
     else:
-        print("exiting ..")
+        pretty_out("backup exit","backup was canceled")
         exit()
 
 
 if args.dice: 
     print(args.dice[0],args.dice[1])
     diceware = diceware.Diceware()
-    print(diceware.throw(int(args.dice[0]),args.dice[1]) )
+    pretty_out("generated password",diceware.throw(int(args.dice[0]),args.dice[1]) )
 
