@@ -104,7 +104,9 @@ In short: pick a password with 10 or more characters, not containing words found
 ## Tips and Recommendations: 
 
 Storing a (plain text) backup on your PC defeats the purpose of having encryption. its best to move it to an USB, cloud or even better just print it and delete the digital copy. 
-
+```
+python pass.py -backup
+```
 You can store more than just a (account/password) pair. there is an file encryption option. (it is strongly recommended to make a backup first) 
 
 When picking a master password, try out the password generation command. It runs the diceware algorithm which returns a password of a given amount of words, separated with a given separator. The diceware algorithm creates passwords with high [entropy](https://en.wikipedia.org/wiki/Password_strength#Entropy_as_a_measure_of_password_strength), that are still somewhat memorable. 
