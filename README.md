@@ -58,7 +58,7 @@ Your are all set up to use the password manager!
 This means you can now add credentials to your manager to store them safely and retrieve them later.
 Run the -help command for more info. 
 ```
-python pass.py -help
+python pass.py -h
 ```
 This will print the "help menu". 
 
