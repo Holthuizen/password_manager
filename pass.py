@@ -36,7 +36,7 @@ def user_setup(path, salt,n):
     print("create your master password, your master password acts like a key to encrypt/decrypt your data, don't lose it! ")
     masterpass =  input(" \t setup master password >> ")
     confirm_mp =  input(" \t confirm your master password >> ")
-    hint =  input(" \t write down a hit, use with caution >> ")
+    hint =  input(" \t write down a hint, use with caution! >> ")
 
     #check if passwords match
     if not masterpass == confirm_mp: 
