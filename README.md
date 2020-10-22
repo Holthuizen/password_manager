@@ -38,6 +38,9 @@ Place the following files in the same directory:
 * pass.py
 * diceware.py
 * diceware_list.txt
+
+(you can download the files with clone > Download ZIP)
+
 From this directory you can run commands with: python pass.py [-command] [arguments]
 
 **Run the following two commands to get started:** 
@@ -111,14 +114,15 @@ python pass.py -backup
 
 -there is an file encryption option. (it is strongly recommended to make a backup first) 
 
--When picking a master password, try out the password generation command. It runs the diceware algorithm which returns a password of a given amount of words, separated with a given separator. The diceware algorithm creates passwords with high [entropy](https://en.wikipedia.org/wiki/Password_strength#Entropy_as_a_measure_of_password_strength), that are still somewhat memorable. 
+-When picking a master password, try out the password generation command. It runs the diceware algorithm which returns a password of a given amount of words, separated with a *. The diceware algorithm creates passwords with high [entropy](https://en.wikipedia.org/wiki/Password_strength#Entropy_as_a_measure_of_password_strength), that are still somewhat memorable. 
 
 ```
-python pass.py -generate-pw 5 -
+python pass.py -generate-pw 5
 ```
 -can give an output like:  
-*align-elegy-flog-anton-stomp*
-
+```
+align*elegy*flog*anton*stomp*
+````
 
 
 
