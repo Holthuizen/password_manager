@@ -20,11 +20,12 @@ class Diceware:
         for pair in _wordlist: 
             #split number from word and only store the word 
            self.wordlist.append(pair[5:].decode())
-    def throw(self,n,divider=''):
+    def throw(self,n):
         if(n < 3): 
             print(f"{n} is to low of a number")
             exit()
         password = "" 
+        divider='*'
         for t in range(n):
             #pick even word with different random method than odd words 
             if(t % 2 == 0):

@@ -11,7 +11,6 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
 
 password_default_file = "credentials.txt"
-password_provided = 'password'  # This is input in the form of a string
 
 #utility 
 def pretty_out(title, message): 
@@ -23,7 +22,7 @@ def pretty_out(title, message):
 #create json app_config file for storing, salt, checksum and iterations
 def user_setup(path, salt,n):
     if os.path.exists(path): 
-        print("already setup an master password, backup your files in plain text before changing your masterpass, exiting .. ")
+        pretty_out("setup","already setup an master password, backup your files in plain text before changing your masterpass, exiting .. ")
         exit()
     
     if not os.path.exists(password_default_file): 
@@ -37,10 +36,13 @@ def user_setup(path, salt,n):
     print("create your master password, your master password acts like a key to encrypt/decrypt your data, don't lose it! ")
     masterpass =  input(" \t setup master password >> ")
     confirm_mp =  input(" \t confirm your master password >> ")
+    hint =  input(" \t write down a hit, use with caution >> ")
 
     #check if passwords match
     if not masterpass == confirm_mp: 
         return user_setup(path, salt,n)
+
+
 
     try:
         key = generate_key(masterpass,salt,n)
@@ -56,10 +58,13 @@ def user_setup(path, salt,n):
     checksum = key[0:10]
     config = {}
     config["salt"]= salt 
+    config["hint"] = hint
     config["checksum"] = checksum
     config["iteration_count"] = n 
     with open(path, "w") as outfile:  
         json.dump(config, outfile) 
+
+    pretty_out("setup complete","next run '-encrypt-file credentials.txt' to continue")
  
 def SHA3_256(data, salt): 
     try: 
@@ -103,6 +108,21 @@ def load_config(path):
         exit()
 
 
+#data reading and writing
+#account password pairs (string) to dictionary
+def custom_parser(data_string): 
+    _data={}
+    try:
+        print(data_string.split('-'))
+        for value in data_string.split('-'): 
+            a,p = value.split(':')
+            _data[a]= p        
+    except:
+        pretty_out("parser error","no data found")
+        exit()
+
+    return _data
+
 def login():
     #setup 
     config = load_config("app_config.json")
@@ -115,19 +135,6 @@ def login():
     else: 
         pretty_out("login error","master password doesn't match")
         exit()
-
-#data reading and writing
-#account password pairs (string) to dictionary
-def custom_parser(data_string): 
-    _data={}
-    try:
-        for value in data_string.split('-'): 
-            a,p = value.split(':')
-            _data[a]= p        
-    except:
-        return {}
-
-    return _data
 
 
 def custom_parser_to_string(data_dict): 
@@ -153,6 +160,9 @@ def update_value(lookup_key, decrypted_data, new_value):
         return False
 def delete_value(lookup_key, decrypted_data): 
     data_dir = custom_parser(decrypted_data.decode())
+    if len(data_dir) < 2: 
+        pretty_out("delete value", "cant delete last time, items > 0 ")
+        exit()
     if lookup_key in data_dir:
        del data_dir[lookup_key]
        return data_dir #updated copy, type string
@@ -167,6 +177,7 @@ def read_file(path):
             exit()
         file = open(path, 'r')  # Open file as read
         contents = file.read()
+        pretty_out("read_file", contents)
         file.close()
         return contents
 
@@ -210,6 +221,7 @@ def decrypt(encrypted,key):
         return f.decrypt(encrypted)
     except:
         pretty_out("decryption error","likely an incorrect master password")
+        pretty_out("decryption error encrypted = ",encrypted)
         exit()
 
 
@@ -243,7 +255,7 @@ parser.add_argument('-update', nargs=2, help="enter account name and new passwor
 parser.add_argument('-delete', nargs=1, help="remove / delete  account name and new password")
 parser.add_argument('-list', action="store_true", help="print an overview list of all stored accounts")
 parser.add_argument('-backup', action="store_true", help="create a plain text file with all your accounts, expects: master password, returns backup file path")
-parser.add_argument('-generate-pw', dest='dice', nargs=2, help="generate humanly readable password, expects: number of words, divider")
+parser.add_argument('-generate-pw', dest='dice', nargs=1, help="generate humanly readable password, expects: number of words")
 
 #parse
 args = parser.parse_args()
@@ -344,7 +356,7 @@ if args.backup:
 
 
 if args.dice: 
-    print(args.dice[0],args.dice[1])
+    print(args.dice[0])
     diceware = diceware.Diceware()
-    pretty_out("generated password",diceware.throw(int(args.dice[0]),args.dice[1]) )
+    pretty_out("generated password",diceware.throw(int(args.dice[0])))
 
