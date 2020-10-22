@@ -13,7 +13,7 @@ from cryptography.fernet import Fernet
 password_default_file = "credentials.txt"
 password_provided = 'password'  # This is input in the form of a string
 
-#util
+#utility 
 def pretty_out(title, message): 
     print(f" {'-'*100}")
     print(f" |{title}|\t{message}"); 
@@ -125,7 +125,7 @@ def custom_parser(data_string):
             a,p = value.split(':')
             _data[a]= p        
     except:
-        return ""
+        return {}
 
     return _data
 
@@ -163,7 +163,7 @@ def delete_value(lookup_key, decrypted_data):
 
 def read_file(path): 
         if not os.path.exists(path):
-            pretty_out("read file error" "\n error in read_file:  file not found \n")
+            pretty_out("read file error", "\n error in read_file:  file not found \n")
             exit()
         file = open(path, 'r')  # Open file as read
         contents = file.read()
@@ -190,7 +190,7 @@ def encrypt(data,key):
         f = Fernet(key)
         return f.encrypt(secret)
     except:
-        pretty_out("encrypte error","missing data or faild key")
+        pretty_out("encrypt error","missing data or failed key")
         return login()
 
 #argument types: strings, base64key    
