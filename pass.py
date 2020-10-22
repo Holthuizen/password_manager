@@ -113,7 +113,6 @@ def load_config(path):
 def custom_parser(data_string): 
     _data={}
     try:
-        print(data_string.split('-'))
         for value in data_string.split('-'): 
             a,p = value.split(':')
             _data[a]= p        
@@ -177,7 +176,6 @@ def read_file(path):
             exit()
         file = open(path, 'r')  # Open file as read
         contents = file.read()
-        pretty_out("read_file", contents)
         file.close()
         return contents
 
@@ -221,7 +219,6 @@ def decrypt(encrypted,key):
         return f.decrypt(encrypted)
     except:
         pretty_out("decryption error","likely an incorrect master password")
-        pretty_out("decryption error encrypted = ",encrypted)
         exit()
 
 
