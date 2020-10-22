@@ -39,7 +39,7 @@ Place the following files in the same directory:
 * diceware.py
 * diceware_list.txt
 
-(you can download the files with clone)
+(you can download the files with clone > Download ZIP)
 
 From this directory you can run commands with: python pass.py [-command] [arguments]
 
